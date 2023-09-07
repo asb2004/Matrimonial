@@ -1,0 +1,195 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style type="text/css">
+        *
+        {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        .header
+        {
+            background-color: #EADBC8;
+            height: 70px;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        #logo
+        {
+            width: 130px;
+            margin: 15px 20px;
+        }
+        
+        .header-items
+        {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: end;
+            height: 100%;
+            width: 100%;
+            
+        }
+        
+        #imgprofile
+        {
+            width: 50px;
+            height: 50px;
+            margin: 0px 10px;
+            border-radius: 100px;
+        }
+        
+        #username
+        {
+            font-size: 20px;
+        }
+        
+        #btnsignout
+        {
+            background: none;
+            border: 2px solid black;
+            border-radius: 5px;
+            margin: 20px;
+            padding: 10px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            height: 47px;
+        }
+        
+        #btnsignout:hover
+        {
+            background-color: Black;
+            color: #EADBC8;
+        }
+        
+        .second-row
+        {
+            width: 100%;
+            min-height: 86.5vh;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .menu
+        {
+            background-color: #F8F0E5;
+            width: 3.5%;
+            overflow: hidden;
+            height: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items:stretch;
+            transition: all 0.3s;
+        }
+        
+        .menu:hover
+        {
+            width: 15%;
+        }
+        
+        .menu-items
+        {
+            padding: 15px;
+            font-size: 17px;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .menu-items span
+        {
+            margin-right: 15px;
+        }
+        
+        .menu-items:visited
+        {
+            color: Black;
+        }
+        
+        .menu-items:active
+        {
+            background-color: Aqua;
+        }
+        
+        .menu-items:hover
+        {
+            background-color: #EADBC8;
+        }
+        
+        .content
+        {
+            width: 97.5%;
+            height: inherit;
+            max-width: 97.5%;
+            min-width: 85%;
+        }
+        
+        .footer
+        {
+            background-color: Black;
+            height: 30px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            color: White;
+            justify-content: center;
+        }
+        
+        </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="page">
+        <div class="header">
+            <asp:Image ID="logo" runat="server" ImageUrl="~/images/logo.png" />
+            <div class="header-items">
+                <asp:Label ID="username" runat="server" Text="">Hello! </asp:Label>
+                <asp:Image ID="imgprofile" runat="server" 
+                    ImageUrl="~/images/profile_logo.png" />
+                 <asp:Button ID="btnsignout" runat="server" Text="Sign out" />
+            </div>
+           
+        </div>
+
+        <div class="second-row">
+            <div class="menu">
+                <asp:HyperLink ID="HyperLink4" runat="server" class="menu-items" 
+                    NavigateUrl="~/HomePage.aspx"><span class="material-symbols-outlined">home</span>Home</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink2" runat="server" class="menu-items" 
+                    NavigateUrl="~/ProfileMatch.aspx"><span class="material-symbols-outlined">group</span>Matches</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink5" runat="server" class="menu-items" 
+                    NavigateUrl="~/likedProfile.aspx"><span class="material-symbols-outlined">favorite</span>Liked</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink1" runat="server" class="menu-items" 
+                    NavigateUrl="~/Profile.aspx"><span class="material-symbols-outlined">account_circle</span>Profile</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink3" runat="server" class="menu-items" 
+                    NavigateUrl="~/ProfileUpdate.aspx"><span class="material-symbols-outlined">edit</span>Update</asp:HyperLink>
+                
+            </div>
+
+            <div class="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copycopyrights findyourheartbeat.com
+        </div>
+    </div>
+    </form>
+</body>
+</html>
