@@ -32,7 +32,7 @@ Partial Class admin_AdminLogin
                 Dim c As New HttpCookie("admin")
                 c.Values("adminLogin") = True
                 Response.Cookies.Add(c)
-                Response.Redirect("Deshboard.aspx")
+                Response.Redirect("UserDetails.aspx")
             Else
                 err.Text = "Invalid Input"
                 err.ForeColor = Drawing.Color.Red

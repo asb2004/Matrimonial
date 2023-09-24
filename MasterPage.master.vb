@@ -38,7 +38,6 @@ Partial Class MasterPage
         Catch ex As Exception
             Response.Write(ex.Message)
         End Try
-        'Dim uid As Integer = Session("uid")
 
         Dim c As HttpCookie = Request.Cookies("user")
         If Request.Cookies("user") Is Nothing Then

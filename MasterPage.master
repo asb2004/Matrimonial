@@ -120,11 +120,6 @@
             color: Black;
         }
         
-        .menu-items:active
-        {
-            background-color: Aqua;
-        }
-        
         .menu-items:hover
         {
             background-color: #EADBC8;

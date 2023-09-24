@@ -32,20 +32,28 @@ Partial Class LoginPage
             dr = cmd.ExecuteReader()
 
             If dr.HasRows Then
-                clearLoginControl()
-                lblloginmsg.Text = "login successfully!"
-                lblloginmsg.ForeColor = Drawing.Color.Blue
-                Dim uid As Integer = 0
-                While (dr.Read())
+                dr.Read()
+                If dr.GetValue(24) = 1 Then
+                    clearLoginControl()
+                    lblloginmsg.Text = "login successfully!"
+                    lblloginmsg.ForeColor = Drawing.Color.Blue
+                    Dim uid As Integer = 0
+                    'While (dr.Read())
                     uid = dr.GetValue(0)
-                End While
+                    'End While
 
-                Dim c As New HttpCookie("user")
-                c.Values("uid") = uid
-                Response.Cookies.Add(c)
+                    Dim c As New HttpCookie("user")
+                    c.Values("uid") = uid
+                    Response.Cookies.Add(c)
 
-                ClientScript.RegisterStartupScript(Me.[GetType](), "myalert", "alert('Log in Successfully!');", True)
-                Response.Redirect("~/HomePage.aspx")
+                    ClientScript.RegisterStartupScript(Me.[GetType](), "myalert", "alert('Log in Successfully!');", True)
+                    Response.Redirect("~/HomePage.aspx")
+                Else
+                    lblloginmsg.Text = "Your Account is not Activated! Try After Some Time..."
+                    lblloginmsg.ForeColor = Drawing.Color.Red
+                End If
+
+                
             Else
                 txtlemail.Focus()
                 lblloginmsg.Text = "Invalid email or password"

@@ -1,0 +1,90 @@
+﻿<%@ Master Language="VB" CodeFile="AdminMaster.master.vb" Inherits="admin_AdminMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .container
+        {
+            display: flex;
+            flex-direction: row;
+            width: inherit;
+            min-height: 97vh;
+        }
+        .sidebar
+        {
+            width: 10%;
+            height: inherit;
+            background-color: #F8F0E5;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        img
+        {
+            margin-top: 30px;
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .sidebar-link
+        {
+            padding: 10px;
+            margin: 5px;
+            text-decoration: none;
+            color: Black;
+            font-size: 17px;
+            border-radius: 10px;
+        }
+        .sidebar-link:hover
+        {
+            background-color: #EADBC8;
+        }
+        .content
+        {
+            width: 90%;
+        }
+        .sign-out
+        {
+            margin: 5px;
+            orphans: none;
+            width: 85px;
+            background: none;
+            border: none;
+            align-self: center;
+            font-size: 17px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .sign-out:hover
+        {
+            background-color: #EADBC8;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div class="container">
+        <div class="sidebar">
+            <img alt="Admin" src="../images/profile_logo.png" width="100px" /> 
+            <asp:Button ID="btnsignout" runat="server" Text="Sign out" class="sign-out"/>
+                <asp:HyperLink ID="HyperLink1" runat="server" class="sidebar-link" NavigateUrl="~/admin/UserDetails.aspx">Users Details</asp:HyperLink> 
+                <asp:HyperLink ID="HyperLink2" runat="server" class="sidebar-link" 
+                    NavigateUrl="~/admin/Activation.aspx">Active Acount</asp:HyperLink>
+                <asp:HyperLink ID="HyperLink3" runat="server" class="sidebar-link" 
+                    NavigateUrl="~/admin/Deactivation.aspx">Deactive Acount</asp:HyperLink>
+        </div>
+
+        <div class="content">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        
+    </div>
+    </form>
+</body>
+</html>

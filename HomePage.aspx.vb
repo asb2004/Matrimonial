@@ -43,13 +43,15 @@ Partial Class _Default
         End If
         Try
             If stxtminage.Text = "" And stxtmaxage.Text = "" Then
-                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "'"
+                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and uid!=" & uid & ""
             ElseIf stxtminage.Text <> "" Then
-                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age>=" & stxtminage.Text & ""
+                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age>=" & stxtminage.Text & " and uid!=" & uid & ""
             ElseIf stxtmaxage.Text <> "" Then
-                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age<=" & stxtmaxage.Text & ""
-            Else
-                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age between " & stxtminage.Text & " and " & stxtmaxage.Text & ""
+                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age<=" & stxtmaxage.Text & " and uid!=" & uid & ""
+            End If
+
+            If stxtmaxage.Text <> "" And stxtminage.Text <> "" Then
+                cmd.CommandText = "select * from tbluser where gender='" & sddlgender.SelectedItem.Text & "' and age between " & stxtminage.Text & " and " & stxtmaxage.Text & " and uid!=" & uid & ""
             End If
 
             da = New SqlDataAdapter(cmd)
@@ -58,7 +60,7 @@ Partial Class _Default
             DataList1.DataSource = dt
             DataList1.DataBind()
             If dt.Rows.Count = 0 Then
-                titleofprofiles.Text = "No data Found!!"
+                titleOfProfiles.Text = "No data Found!!"
             End If
         Catch ex As Exception
             Response.Write(ex.Message)

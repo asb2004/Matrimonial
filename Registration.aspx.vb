@@ -45,15 +45,16 @@ Partial Class Registration
             Else
                 con.Close()
                 Try
-                    cmd.CommandText = "insert into tbluser(name,age,mobileno,dob,gender,email,password,profile) values('" & txtname.Text & "'," & txtage.Text & "," & txtmobileno.Text & ",'" & txtdob.Text & "','" & ddlgender.SelectedItem.Text & "','" & txtemail.Text & "','" & txtpassword.Text & "','" & "~/images/profile_logo.png" & "')"
+                    cmd.CommandText = "insert into tbluser(name,age,mobileno,dob,gender,email,password,profile,active) values('" & txtname.Text & "'," & txtage.Text & "," & txtmobileno.Text & ",'" & txtdob.Text & "','" & ddlgender.SelectedItem.Text & "','" & txtemail.Text & "','" & txtpassword.Text & "','" & "~/images/profile_logo.png" & "'," & 0 & ")"
                     con.Open()
                     cmd.ExecuteNonQuery()
                     con.Close()
-                    lblmsg.Text = "Registraiton Successfully!"
+
                     ClientScript.RegisterStartupScript(Me.[GetType](), "myalert", "alert('Registraiton Successfully!');", True)
+
+                    lblmsg.Text = "You can Login after a Activate Your Account by our Team."
                     lblmsg.ForeColor = Drawing.Color.Blue
                     clearRegistrationControl()
-                    Response.Redirect("LoginPage.aspx")
                 Catch ex As Exception
                     lblmsg.Text = ex.Message
                     lblmsg.ForeColor = Drawing.Color.Red
